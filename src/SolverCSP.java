@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SolverCSP {
 
-    private List<VariableCSP> variables;
+    private List<Variable> variables;
     private List<Constraint> constraints;
     private PileBacktracking backtrackingPile;
 
@@ -18,7 +18,7 @@ public class SolverCSP {
         this.backtrackingPile = new PileBacktracking();
     }
 
-    public void addVariable(VariableCSP variable) {
+    public void addVariable(Variable variable) {
         this.variables.add(variable);
     }
 
@@ -38,15 +38,15 @@ public class SolverCSP {
     }
 
     private static class SolverState {
-        private final List<VariableCSP> variables;
+        private final List<Variable> variables;
         private final List<Constraint> constraints;
 
-        public SolverState(List<VariableCSP> variables, List<Constraint> constraints) {
+        public SolverState(List<Variable> variables, List<Constraint> constraints) {
             this.variables = new ArrayList<>(variables);
             this.constraints = new ArrayList<>(constraints);
         }
 
-        public List<VariableCSP> getVariables() {
+        public List<Variable> getVariables() {
             return variables;
         }
 

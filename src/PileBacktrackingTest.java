@@ -1,7 +1,8 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Tests for the class PileBacktracking
+ */
 class PileBacktrackingTest {
     @Test
     public void test_pushPile(){} //No need, calls Stack method push()
