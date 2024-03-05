@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Implementation of Domain with integers
- * @author Antony Ferry
+ * @author Antony FERRY
  */
 public class IntDomain implements Domain<Integer>{
 

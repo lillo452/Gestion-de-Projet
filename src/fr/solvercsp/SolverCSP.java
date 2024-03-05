@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Class SolverCSP is the main class of the solver.
+ * It is used to solve the CSP problem.
+ * It contains the variables, the constraints and the backtracking pile.
  * @author Lillo G.
  * @version 1.0
  */

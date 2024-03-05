@@ -2,7 +2,7 @@ package fr.solvercsp;
 
 /**
  * CSP variable
- * @author Antony Ferry
+ * @author Antony FERRY
  * @param <T> type of variable's value
  */
 public class Variable<T> {

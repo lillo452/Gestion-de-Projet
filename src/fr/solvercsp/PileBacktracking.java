@@ -6,7 +6,7 @@ import java.util.Stack;
  * Class PileBacktracking is use in the solver to keep
  * the progression in the solving process
  *
- * @author Charles T.
+ * @author Charles THIEBAUT
  * @version 1.0
  */
 

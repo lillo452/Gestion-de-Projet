@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the class PileBacktracking
+ * @see PileBacktracking
+ * @author Frank LEGGETT
  */
 class PileBacktrackingTest {
     @Test
