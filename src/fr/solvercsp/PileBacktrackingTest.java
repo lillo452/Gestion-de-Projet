@@ -1,4 +1,4 @@
-package solver;
+package fr.solvercsp;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package solver;
+package fr.solvercsp;
 
 import java.util.ArrayList;
 import java.util.List;
