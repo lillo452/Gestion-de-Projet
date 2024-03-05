@@ -1,3 +1,5 @@
+package solver;
+
 import org.junit.jupiter.api.Test;
 
 class VariableTest{
