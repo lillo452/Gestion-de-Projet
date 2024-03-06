@@ -1,4 +1,4 @@
-package fr.solvercsp;
+package fr.solvercsp.domains;
 
 import java.util.List;
 

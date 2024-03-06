@@ -1,3 +1,5 @@
+package fr.solvercsp;
+
 public class Triplet {
     private Variable variable;
     private int oldValue;

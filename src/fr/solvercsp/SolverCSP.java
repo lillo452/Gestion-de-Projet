@@ -1,7 +1,11 @@
 package fr.solvercsp;
 
+import fr.solvercsp.constraints.Constraint;
+import fr.solvercsp.constraints.RelationConstraint;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Class SolverCSP is the main class of the solver.
@@ -81,7 +85,7 @@ public class SolverCSP {
         }
     }
     public void addRelationConstraint(Variable variable1, String relationOperator, Variable variable2) {
-    RelationConstraint relationConstraint = new RelationConstraint(variable1, relationOperator, variable2);
+    RelationConstraint relationConstraint = new RelationConstraint();
     addConstraint(relationConstraint);
     }
 }

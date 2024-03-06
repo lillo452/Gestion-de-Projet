@@ -1,5 +1,7 @@
 package fr.solvercsp;
 
+import fr.solvercsp.domains.Domain;
+
 /**
  * CSP variable
  * @author Antony FERRY

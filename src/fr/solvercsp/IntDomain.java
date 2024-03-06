@@ -1,12 +1,14 @@
 package fr.solvercsp;
 
+import fr.solvercsp.domains.Domain;
+
 import java.util.List;
 
 /**
  * Implementation of Domain with integers
  * @author Antony FERRY
  */
-public class IntDomain implements Domain<Integer>{
+public class IntDomain implements Domain<Integer> {
 
     /**
      * List of variables in the domain

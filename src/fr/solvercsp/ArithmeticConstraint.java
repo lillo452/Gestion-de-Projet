@@ -1,24 +1,17 @@
 package fr.solvercsp;
 
+import fr.solvercsp.constraints.Constraint;
+
 /**
  * @author Lillo G.
  * @version 1.0
  */
 
-public class ArithmeticConstraint extends Constraint {
-
-    private Variable variable;
-    private String arithmeticOperator;
-    private int constant;
-
-    public ArithmeticConstraint(Variable variable, String arithmeticOperator, int constant) {
-        this.variable = variable;
-        this.arithmeticOperator = arithmeticOperator;
-        this.constant = constant;
-    }
+public class ArithmeticConstraint implements Constraint {
 
     @Override
-    public boolean isSatisfied() {
-    //Sous-tache 3.1 Antony
+    public boolean isSatisfied(Variable variable1, String relationOperator, Variable variable2) {
+        //Sous-tache 3.1 Antony
+        return false;
     }
 }
