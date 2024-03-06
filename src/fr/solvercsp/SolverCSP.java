@@ -71,4 +71,8 @@ public class SolverCSP {
             return constraints;
         }
     }
+    public void addRelationConstraint(Variable variable1, String relationOperator, Variable variable2) {
+    RelationConstraint relationConstraint = new RelationConstraint(variable1, relationOperator, variable2);
+    addConstraint(relationConstraint);
+    }
 }
