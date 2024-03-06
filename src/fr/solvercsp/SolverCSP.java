@@ -39,28 +39,37 @@ public class SolverCSP {
     }
 
         public void pushState() {
-        variablesStack.push(new ArrayList<>(variablesStack.peek()));
-        constraintsStack.push(new ArrayList<>(constraintsStack.peek()));
-        this.backtrackingPile.pushPile(new SolverState(variablesStack.peek(), constraintsStack.peek()));
+        List<Triplet> triplets = new ArrayList<>();
+        for (Variable variable : variables) {
+            triplets.add(new Triplet(variable, variable.getValue(), variable.getValue()));
+        }
+        this.backtrackingPile.pushPile(new SolverState(triplets, constraints));
     }
 
         public void popState() {
-        if (variablesStack.size() > 1 && constraintsStack.size() > 1) {
-            variablesStack.pop();
-            constraintsStack.pop();
-        } else {
-            System.out.println("Erreur");
-            }
+        SolverState prevState = (SolverState) this.backtrackingPile.getTopPile();
+        List<Triplet> triplets = prevState.getTriplets();
+        for (Triplet triplet : triplets) {
+            triplet.getVariable().setValue(triplet.getOldValue());
+        }
+        this.variables = new ArrayList<>(prevState.getVariables());
+        this.constraints = new ArrayList<>(prevState.getConstraints());
         this.backtrackingPile.pullPile();
     }
 
-    private static class SolverState {
+        private static class SolverState {
+        private final List<Triplet> triplets;
         private final List<Variable> variables;
         private final List<Constraint> constraints;
 
-        public SolverState(List<Variable> variables, List<Constraint> constraints) {
+        public SolverState(List<Triplet> triplets, List<Variable> variables, List<Constraint> constraints) {
+            this.triplets = new ArrayList<>(triplets);
             this.variables = new ArrayList<>(variables);
             this.constraints = new ArrayList<>(constraints);
+    }
+
+        public List<Triplet> getTriplets() {
+            return triplets;
         }
 
         public List<Variable> getVariables() {
