@@ -1,3 +1,5 @@
+package fr.solvercsp;
+
 /**
  * @author Lillo G.
  * @version 1.0
