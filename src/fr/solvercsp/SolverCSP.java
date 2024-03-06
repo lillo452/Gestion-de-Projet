@@ -17,7 +17,7 @@ import java.util.Stack;
 
 public class SolverCSP {
 
-    private static Stack<List<Variable>> variablesStack;
+    private Stack<List<Variable>> variablesStack;
     private Stack<List<Constraint>> constraintsStack;
     private PileBacktracking backtrackingPile;
     private List<Variable> variables;
