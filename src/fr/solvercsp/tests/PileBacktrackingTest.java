@@ -1,5 +1,6 @@
-package fr.solvercsp;
+package fr.solvercsp.tests;
 
+import fr.solvercsp.PileBacktracking;
 import org.junit.jupiter.api.Test;
 
 /**

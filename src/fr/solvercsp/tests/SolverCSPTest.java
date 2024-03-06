@@ -1,4 +1,6 @@
-package fr.solvercsp;
+package fr.solvercsp.tests;
+import fr.solvercsp.SolverCSP;
+import fr.solvercsp.Variable;
 import fr.solvercsp.constraints.Constraint;
 import fr.solvercsp.constraints.RelationConstraint;
 import org.junit.jupiter.api.Test;

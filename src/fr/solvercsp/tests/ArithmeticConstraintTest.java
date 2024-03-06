@@ -1,4 +1,6 @@
-package fr.solvercsp;
+package fr.solvercsp.tests;
+import fr.solvercsp.ArithmeticConstraint;
+import fr.solvercsp.Variable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
