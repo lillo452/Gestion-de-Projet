@@ -12,6 +12,12 @@ public class IntDomain implements Domain<Integer>{
     private int max;
     private List<Integer> excludedValues;
 
+    /**
+     * Constructor for the IntDomain class.
+     * @param min The minimum value in the domain.
+     * @param max The maximum value in the domain.
+     * @param excludedValues A list of values to be excluded from the domain.
+     */
     public IntDomain(int min, int max, List<Integer> excludedValues){
         this.min = min;
         this.max = max;
