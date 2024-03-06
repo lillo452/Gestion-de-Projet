@@ -1,3 +1,8 @@
+/**
+ * @author Lillo G.
+ * @version 1.0
+ */
+
 public class RelationConstraint extends Constraint {
 
     private Variable variable1;
