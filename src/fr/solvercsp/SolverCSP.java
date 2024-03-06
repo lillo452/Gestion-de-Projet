@@ -13,32 +13,44 @@ import java.util.List;
 
 public class SolverCSP {
 
-    private List<Variable> variables;
-    private List<Constraint> constraints;
+    private Stack<List<Variable>> variablesStack;
+    private Stack<List<Constraint>> constraintsStack;
     private PileBacktracking backtrackingPile;
-
+    
     public SolverCSP() {
-        this.variables = new ArrayList<>();
-        this.constraints = new ArrayList<>();
+        this.variablesStack = new Stack<>();
+        this.constraintsStack = new Stack<>();
+        this.variablesStack.push(new ArrayList<>()); // Initialisation avec une liste vide au départ
+        this.constraintsStack.push(new ArrayList<>()); // Initialisation avec une liste vide au départ
         this.backtrackingPile = new PileBacktracking();
     }
 
-    public void addVariable(Variable variable) {
-        this.variables.add(variable);
+
+        public void addVariable(Variable variable) {
+        List<Variable> currentVariables = new ArrayList<>(variablesStack.peek());
+        currentVariables.add(variable);
+        variablesStack.push(currentVariables);
     }
 
-    public void addConstraint(Constraint constraint) {
-        this.constraints.add(constraint);
+        public void addConstraint(Constraint constraint) {
+        List<Constraint> currentConstraints = new ArrayList<>(constraintsStack.peek());
+        currentConstraints.add(constraint);
+        constraintsStack.push(currentConstraints);
     }
 
-    public void pushState() {
-        this.backtrackingPile.pushPile(new SolverState(variables, constraints));
+        public void pushState() {
+        variablesStack.push(new ArrayList<>(variablesStack.peek()));
+        constraintsStack.push(new ArrayList<>(constraintsStack.peek()));
+        this.backtrackingPile.pushPile(new SolverState(variablesStack.peek(), constraintsStack.peek()));
     }
 
-    public void popState() {
-        SolverState prevState = (SolverState) this.backtrackingPile.getTopPile();
-        this.variables = new ArrayList<>(prevState.getVariables());
-        this.constraints = new ArrayList<>(prevState.getConstraints());
+        public void popState() {
+        if (variablesStack.size() > 1 && constraintsStack.size() > 1) {
+            variablesStack.pop();
+            constraintsStack.pop();
+        } else {
+            System.out.println("Erreur");
+            }
         this.backtrackingPile.pullPile();
     }
 
