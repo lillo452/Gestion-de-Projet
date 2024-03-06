@@ -1,3 +1,8 @@
+/**
+ * @author Lillo G.
+ * @version 1.0
+ */
+
 public class ArithmeticConstraint extends Constraint {
 
     private Variable variable;
