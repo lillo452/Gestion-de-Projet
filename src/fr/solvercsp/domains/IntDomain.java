@@ -25,18 +25,12 @@ public class IntDomain implements Domain{
     }
 
     /**
-     * List of variables in the domain
-     * Example: if the domain is between 0 and 5, getVariables will return {0, 1, 2, 3, 4, 5}
-     * @return list of variables in the domain
+     * Restricts the domain to the intersection of the current domain and the given domain.
+     * @param domain The domain to restrict the current domain to.
      */
     @Override
-    public List<Integer> getValues() {
-        List<Integer> values = new java.util.ArrayList<>();
-        for (int i = min; i <= max; i++){
-            if (!excludedValues.contains(i)){
-                values.add(i);
-            }
-        }
-        return values;
+    public void restrictDomain(IntDomain domain) {
+        min = Math.max(min, domain.min);
+        max = Math.min(max, domain.max);
     }
 }

@@ -8,11 +8,9 @@ import fr.solvercsp.Variable;
 public interface Constraint {
 
     /**
-     * This method checks if a given constraint is satisfied.
+     * This method filters the domain of a given variable based on the constraint logic.
      * @param variable1 The first variable in the constraint.
-     * @param relationOperator The operator that relates the two variables.
      * @param variable2 The second variable in the constraint.
-     * @return boolean This returns the result of the constraint satisfaction check.
      */
-    boolean isSatisfied(Variable<T> variable1, String relationOperator, Variable<T> variable2);
+    void filter(Variable variable1, Variable variable2);
 }

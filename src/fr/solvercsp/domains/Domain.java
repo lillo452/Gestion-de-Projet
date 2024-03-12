@@ -7,6 +7,5 @@ import java.util.List;
  */
 public interface Domain {
 
-    List<T> getValues();
-
+    void restrictDomain(IntDomain domain);
 }
