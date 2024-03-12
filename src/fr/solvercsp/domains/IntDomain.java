@@ -1,5 +1,6 @@
 package fr.solvercsp.domains;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,8 +9,7 @@ import java.util.List;
  */
 public class IntDomain implements Domain{
 
-    private int min;
-    private int max;
+    private List<Border> borders = new ArrayList<>();
 
     /**
      * Constructor for the IntDomain class.
@@ -17,8 +17,7 @@ public class IntDomain implements Domain{
      * @param max The maximum value in the domain.
      */
     public IntDomain(int min, int max){
-        this.min = min;
-        this.max = max;
+        borders.add(new Border(min, max));
     }
 
     /**
@@ -26,7 +25,7 @@ public class IntDomain implements Domain{
      * @return True if the domain is empty, false otherwise.
      */
     public boolean isEmpty(){
-        return min > max;
+        return borders.isEmpty();
     }
 
     /**
@@ -35,16 +34,19 @@ public class IntDomain implements Domain{
      * @return True if the value is in the domain, false otherwise.
      */
     public boolean isIn(int i){
-        return i >= min && i <= max;
+        return borders.stream().anyMatch(border -> border.isIn(i));
     }
 
     /**
      * Returns if the domain is bound by the given values.
      * Only uses for tests
+     * @param min The minimum value to check.
+     * @param max The maximum value to check.
+     * @param index The index of the border to check.
      * @return True if the domain is bound by the given values, false otherwise.
      */
-    public boolean isBoundBy(int min, int max){
-        return this.min == min && this.max == max;
+    public boolean isBoundBy(int index, int min, int max){
+        return borders.get(index).isBoundBy(min, max);
     }
 
     /**
@@ -52,12 +54,25 @@ public class IntDomain implements Domain{
      * @return True if the domain is a single value domain, false otherwise.
      */
     public boolean isSingle(){
-        return min == max;
+        return borders.size() == 1 && borders.getFirst().isSingle();
     }
 
     @Override
     public void intersectDomain(IntDomain domain) {
-        min = Math.max(min, domain.min);
-        max = Math.min(max, domain.max);
+        for(int i = 0; i < borders.size(); i++){
+            borders.get(i).intersect(domain.borders.size() == 1 ? domain.borders.getFirst() : domain.borders.get(i));
+        }
+        clean();
+    }
+
+    public void notIntersectDomain(IntDomain domain){
+        /*for(int i = 0; i < borders.size(); i++){
+            borders.get(i).notintersect(domain.borders.size() == 1 ? domain.borders.getFirst() : domain.borders.get(i));
+        }*/
+        clean();
+    }
+
+    public void clean(){
+        borders.removeIf(Border::isEmpty);
     }
 }
