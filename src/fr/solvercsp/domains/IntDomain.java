@@ -18,6 +18,7 @@ public class IntDomain implements Domain{
      */
     public IntDomain(int min, int max){
         borders.add(new Border(min, max));
+        clean();
     }
 
     /**
@@ -69,6 +70,7 @@ public class IntDomain implements Domain{
         /*for(int i = 0; i < borders.size(); i++){
             borders.get(i).notintersect(domain.borders.size() == 1 ? domain.borders.getFirst() : domain.borders.get(i));
         }*/
+        //[5; 10] [6; 12] =>
         clean();
     }
 
