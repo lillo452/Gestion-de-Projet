@@ -40,7 +40,7 @@ class IntDomainTest {
     void intersectDomain() {
         IntDomain domain = new IntDomain(5, 10);
         domain.intersectDomain(new IntDomain(7, 12));
-        assertTrue(domain.isBoundBy(7, 10));
+        assertTrue(domain.isBoundBy(0, 7, 10));
         domain.intersectDomain(new IntDomain(3, 6));
         assertTrue(domain.isEmpty());
     }
