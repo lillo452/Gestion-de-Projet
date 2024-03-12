@@ -17,6 +17,10 @@ public class IntVariable implements Variable{
         this.domain = domain;
     }
 
+    public IntVariable(int min, int max){
+        this(new IntDomain(min, max));
+    }
+
     @Override
     public void intersectDomain(Variable variable2) {
         IntVariable intVariable = (IntVariable) variable2;
