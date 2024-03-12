@@ -4,9 +4,8 @@ import fr.solvercsp.Variable;
 
 /**
  * This interface represents a generic constraint.
- * @param <T> The type of the variables that this constraint applies to.
  */
-public interface Constraint<T> {
+public interface Constraint {
 
     /**
      * This method checks if a given constraint is satisfied.

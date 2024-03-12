@@ -6,7 +6,7 @@ import java.util.List;
  * Implementation of Domain with integers
  * @author Antony Ferry
  */
-public class IntDomain implements Domain<Integer>{
+public class IntDomain implements Domain{
 
     private int min;
     private int max;

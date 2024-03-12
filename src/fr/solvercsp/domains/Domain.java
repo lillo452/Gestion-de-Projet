@@ -4,9 +4,8 @@ import java.util.List;
 
 /**
  * Domain of a CSP
- * @param <T> type of variables's value
  */
-public interface Domain<T> {
+public interface Domain {
 
     List<T> getValues();
 
