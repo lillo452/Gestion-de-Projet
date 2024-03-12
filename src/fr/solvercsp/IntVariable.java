@@ -23,6 +23,12 @@ public class IntVariable implements Variable{
         domain.intersectDomain(intVariable.domain);
     }
 
+    @Override
+    public void notIntersectDomain(Variable variable2) {
+        IntVariable intVariable = (IntVariable) variable2;
+        domain.notIntersectDomain(intVariable.domain);
+    }
+
     /**
      * Save the current domain
      * @see #undo()

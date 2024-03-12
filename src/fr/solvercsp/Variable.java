@@ -11,4 +11,6 @@ public interface Variable {
      * @see IntDomain#intersectDomain(IntDomain)
      */
     void intersectDomain(Variable variable2);
+
+    void notIntersectDomain(Variable variable2);
 }
