@@ -22,4 +22,20 @@ public class IntVariable implements Variable{
         IntVariable intVariable = (IntVariable) variable2;
         domain.restrictDomain(intVariable.domain);
     }
+
+    /**
+     * Save the current domain
+     * @see #undo()
+     */
+    public void save(){
+        domains.push(domain);
+    }
+
+    /**
+     * Undo the last domain saved by {@link #save()}
+     * @see #save()
+     */
+    public void undo(){
+        domain = domains.pop();
+    }
 }
