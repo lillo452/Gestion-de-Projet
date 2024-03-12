@@ -55,10 +55,6 @@ public class IntDomain implements Domain{
         return min == max;
     }
 
-    /**
-     * Restricts the domain to the intersection of the current domain and the given domain.
-     * @param domain The domain to restrict the current domain to.
-     */
     @Override
     public void restrictDomain(IntDomain domain) {
         min = Math.max(min, domain.min);

@@ -4,6 +4,7 @@ import fr.solvercsp.Variable;
 
 /**
  * This interface represents a generic constraint.
+ * @author Antony Ferry
  */
 public interface Constraint {
 

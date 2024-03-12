@@ -4,6 +4,10 @@ import fr.solvercsp.domains.IntDomain;
 
 import java.util.Stack;
 
+/**
+ * Implementation of a variable with integer domain
+ * @author Antony Ferry
+ */
 public class IntVariable implements Variable{
 
     private IntDomain domain;
