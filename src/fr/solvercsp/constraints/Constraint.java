@@ -3,15 +3,21 @@ package fr.solvercsp.constraints;
 import fr.solvercsp.Variable;
 
 /**
- * This interface represents a generic constraint.
+ * This class represents a generic constraint.
  * @author Antony Ferry
  */
-public interface Constraint {
+public abstract class Constraint {
+
+    protected Variable variable1;
+    protected Variable variable2;
+
+    public Constraint(Variable variable1, Variable variable2){
+        this.variable1 = variable1;
+        this.variable2 = variable2;
+    }
 
     /**
      * This method filters the domain of a given variable based on the constraint logic.
-     * @param variable1 The first variable in the constraint.
-     * @param variable2 The second variable in the constraint.
      */
-    void filter(Variable variable1, Variable variable2);
+    abstract void filter();
 }

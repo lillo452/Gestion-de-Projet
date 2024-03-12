@@ -17,8 +17,8 @@ class EqualsConstraintTest {
         Variable variable1 = new IntVariable(domain1);
         Variable variable2 = new IntVariable(domain2);
 
-        EqualsConstraint equalsConstraint = new EqualsConstraint();
-        equalsConstraint.filter(variable1, variable2);
+        EqualsConstraint equalsConstraint = new EqualsConstraint(variable1, variable2);
+        equalsConstraint.filter();
         assertTrue(domain1.isBoundBy(5, 7));
         assertTrue(domain2.isBoundBy(5, 7));
 
