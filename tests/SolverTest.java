@@ -24,7 +24,7 @@ class SolverTest {
         Solver solver = new Solver(List.of(variable, variable1, variable3, variable2), List.of(new EqualsConstraint(variable, variable1),
                 new EqualsConstraint(variable2, variable3)));
         solver.solve();
-
+        //TODO
 
 
     }
