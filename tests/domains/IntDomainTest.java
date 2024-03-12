@@ -1,7 +1,6 @@
 package domains;
 
 import fr.solvercsp.domains.IntDomain;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,11 +37,11 @@ class IntDomainTest {
     }
 
     @Test
-    void restrictDomain() {
+    void intersectDomain() {
         IntDomain domain = new IntDomain(5, 10);
-        domain.restrictDomain(new IntDomain(7, 12));
+        domain.intersectDomain(new IntDomain(7, 12));
         assertTrue(domain.isBoundBy(7, 10));
-        domain.restrictDomain(new IntDomain(3, 6));
+        domain.intersectDomain(new IntDomain(3, 6));
         assertTrue(domain.isEmpty());
     }
 }

@@ -18,9 +18,9 @@ public class IntVariable implements Variable{
     }
 
     @Override
-    public void restrictDomain(Variable variable2) {
+    public void intersectDomain(Variable variable2) {
         IntVariable intVariable = (IntVariable) variable2;
-        domain.restrictDomain(intVariable.domain);
+        domain.intersectDomain(intVariable.domain);
     }
 
     /**

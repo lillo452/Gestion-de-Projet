@@ -2,8 +2,6 @@ package fr.solvercsp.constraints;
 
 import fr.solvercsp.Variable;
 
-import java.util.List;
-
 /**
  * Implementation of Constraint for an equality constraint.
  * @author Antony Ferry
@@ -11,7 +9,7 @@ import java.util.List;
 public class EqualsConstraint implements Constraint{
     @Override
     public void filter(Variable variable1, Variable variable2) {
-        variable1.restrictDomain(variable2);
-        variable2.restrictDomain(variable1);
+        variable1.intersectDomain(variable2);
+        variable2.intersectDomain(variable1);
     }
 }

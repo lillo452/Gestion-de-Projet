@@ -8,7 +8,7 @@ import fr.solvercsp.domains.IntDomain;
  */
 public interface Variable {
     /**
-     * @see IntDomain#restrictDomain(IntDomain)
+     * @see IntDomain#intersectDomain(IntDomain)
      */
-    void restrictDomain(Variable variable2);
+    void intersectDomain(Variable variable2);
 }

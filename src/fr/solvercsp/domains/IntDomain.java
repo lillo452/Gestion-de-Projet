@@ -56,7 +56,7 @@ public class IntDomain implements Domain{
     }
 
     @Override
-    public void restrictDomain(IntDomain domain) {
+    public void intersectDomain(IntDomain domain) {
         min = Math.max(min, domain.min);
         max = Math.min(max, domain.max);
     }
