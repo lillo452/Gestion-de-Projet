@@ -36,4 +36,18 @@ public class IntVariable implements Variable{
     public void undo(){
         domain = domains.pop();
     }
+
+    public void fixValue(){
+        domain.fixValue();
+        domain.increment();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return domain.isEmpty();
+    }
+
+    public int getValue(){
+        return domain.getValue();
+    }
 }

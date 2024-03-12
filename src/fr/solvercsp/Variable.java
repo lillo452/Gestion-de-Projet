@@ -23,4 +23,8 @@ public interface Variable {
      * @see Variable#save()
      */
     void undo();
+
+    void fixValue();
+
+    boolean isEmpty();
 }

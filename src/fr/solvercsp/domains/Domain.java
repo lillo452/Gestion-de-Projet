@@ -11,4 +11,6 @@ public interface Domain {
      * @param domain The domain to restrict the current domain to.
      */
     void intersectDomain(IntDomain domain);
+
+    void fixValue();
 }

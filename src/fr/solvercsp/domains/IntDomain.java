@@ -55,9 +55,27 @@ public class IntDomain implements Domain{
         return min == max;
     }
 
+    /**
+     * Returns the value of the domain. Use only if isSingle() is true
+     * @return The value in the domain.
+     */
+    public int getValue(){
+        return min;
+    }
+
     @Override
     public void intersectDomain(IntDomain domain) {
         min = Math.max(min, domain.min);
         max = Math.min(max, domain.max);
+    }
+
+    @Override
+    public void fixValue() {
+        this.max = min;
+    }
+
+    public void increment() {
+        min++;
+        max++;
     }
 }
