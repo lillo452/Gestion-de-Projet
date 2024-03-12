@@ -1,4 +1,4 @@
-package fr.solvercsp.tests;
+package domains;
 
 import fr.solvercsp.domains.IntDomain;
 import org.junit.jupiter.api.BeforeEach;
