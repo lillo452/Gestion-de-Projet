@@ -19,5 +19,5 @@ public abstract class Constraint {
     /**
      * This method filters the domain of a given variable based on the constraint logic.
      */
-    abstract void filter();
+    public abstract void filter();
 }
