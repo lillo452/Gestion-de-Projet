@@ -11,7 +11,7 @@ import java.util.Stack;
 public class IntVariable implements Variable{
 
     private IntDomain domain;
-    private Stack<IntDomain> domains;
+    private Stack<IntDomain> domains = new Stack<>();
 
     public IntVariable(IntDomain domain) {
         this.domain = domain;
