@@ -23,18 +23,12 @@ public class IntVariable implements Variable{
         domain.intersectDomain(intVariable.domain);
     }
 
-    /**
-     * Save the current domain
-     * @see #undo()
-     */
+    @Override
     public void save(){
         domains.push(domain);
     }
 
-    /**
-     * Undo the last domain saved by {@link #save()}
-     * @see #save()
-     */
+    @Override
     public void undo(){
         domain = domains.pop();
     }
