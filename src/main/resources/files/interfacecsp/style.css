@@ -1,0 +1,19 @@
+.root {
+    -fx-font-family: Arial;
+    -fx-font-size: 20px;
+}
+
+.text-field {
+    -fx-font-size: 30px;
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+}
+
+#sudokuGrid {
+    -fx-padding: 20px;
+}
+
+.separator {
+    -fx-padding: 0 0.5em 0 0.5em;
+}
