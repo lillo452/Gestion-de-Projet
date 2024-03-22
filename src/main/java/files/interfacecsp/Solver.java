@@ -8,7 +8,7 @@ import java.util.Stack;
  * This class represents a Solver for a generic problem.
  * It uses a stack for backtracking and a list of constraints to verify the problem.
  * @param <type> the type of the variable
- * @author Frank LEGETT
+ * @author Frank LEGGETT
  * @version 1.0
  */
 public class Solver<type> {

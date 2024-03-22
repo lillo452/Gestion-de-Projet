@@ -168,10 +168,8 @@ public class InterfaceController {
                 sudokuProblem.setPos(new SudokuPosition(i, j));
                 int value = sudokuProblem.getGrid()[i][j];
                 if (value != 0) {
-                    // If the number is not zero, set the text color to green
                     textField.setStyle("-fx-text-fill: green; -fx-font-size: 25; -fx-font-family: Arial;");
                 } else {
-                    // If the number is zero, set the text color to red
                     textField.setStyle("-fx-text-fill: red; -fx-font-size: 25; -fx-font-family: Arial;");
                 }
                 textField.setText(String.valueOf(value));

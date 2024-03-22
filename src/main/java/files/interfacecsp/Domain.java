@@ -2,6 +2,12 @@ package files.interfacecsp;
 
 import java.util.List;
 
+/**
+ * This class represents a generic Domain.
+ * @param <type> the type of the domain
+ * @author Lillo GAVOIS
+ * @version 1.0
+ */
 public abstract class Domain<type> {
     private final List<type> list;
     public Domain(List<type> list){
