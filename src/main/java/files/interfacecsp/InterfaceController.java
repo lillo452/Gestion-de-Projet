@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.*;
 
 /**
  * This class represents the controller of the interface.
@@ -95,32 +96,9 @@ public class InterfaceController {
 
         resolutionButton.setOnAction(event -> handleResolutionButtonAction());
 
-        resetButton.setOnAction(event -> {
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    TextField textField = (TextField) sudokuGrid.getChildren().get(i * 9 + j);
-                    textField.clear();
-                }
-            }
-        });
+        resetButton.setOnAction(event -> handleResetButtonAction());
 
-        randomGridButton.setOnAction(event -> {
-            SudokuProblem<Integer> sudokuProblem = new SudokuProblem<>();
-
-            generateRandomGrid(sudokuProblem);
-
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    TextField textField = (TextField) sudokuGrid.getChildren().get(i * 9 + j);
-                    if (sudokuProblem.getGrid()[i][j] != 0) {
-                        textField.setText(String.valueOf(sudokuProblem.getGrid()[i][j]));
-                    } else {
-                        textField.clear();
-                    }
-                    textField.setStyle("-fx-text-fill: black; -fx-font-size: 25; -fx-font-family: Arial;");
-                }
-            }
-        });
+        randomGridButton.setOnAction(event -> handleRandomGridButtonAction());
 
         resolutionButton.setPrefWidth(100);
         resolutionButton.setPrefHeight(40);
@@ -160,21 +138,50 @@ public class InterfaceController {
 
         Solver<Integer> solver = new Solver<>(sudokuProblem, constraintList);
 
-        solver.solve();
+        sudokuProblem = (SudokuProblem<Integer>) solver.solve();
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 TextField textField = (TextField) sudokuGrid.getChildren().get(i * 9 + j);
-                sudokuProblem.setPos(new SudokuPosition(i, j));
                 int value = sudokuProblem.getGrid()[i][j];
-                if (value != 0) {
-                    textField.setStyle("-fx-text-fill: green; -fx-font-size: 25; -fx-font-family: Arial;");
-                } else {
-                    textField.setStyle("-fx-text-fill: red; -fx-font-size: 25; -fx-font-family: Arial;");
-                }
                 textField.setText(String.valueOf(value));
+
+                if (value == 0) {
+                    textField.setStyle("-fx-text-fill: red; -fx-font-size: 25; -fx-font-family: Arial;");
+                } else if (sudokuProblem.wasInitiallyFilled(i, j)) {
+                    textField.setStyle("-fx-text-fill: black; -fx-font-size: 25; -fx-font-family: Arial;");
+                } else {
+                    textField.setStyle("-fx-text-fill: green; -fx-font-size: 25; -fx-font-family: Arial;");
+                }
             }
         }
+
+        SudokuProblem<Integer> solvedProblem = (SudokuProblem<Integer>) solver.solve();
+
+        boolean isSolved = true;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (solvedProblem.getGrid()[i][j] == 0) {
+                    isSolved = false;
+                    break;
+                }
+            }
+            if (!isSolved) {
+                break;
+            }
+        }
+
+        if (!isSolved) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Could not solve this grid.");
+            alert.showAndWait();
+            return;
+        }
+
+        sudokuProblem = solvedProblem;
+
     }
 
     /**
@@ -182,6 +189,12 @@ public class InterfaceController {
      */
     @FXML
     public void handleResetButtonAction() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                TextField textField = (TextField) sudokuGrid.getChildren().get(i * 9 + j);
+                textField.clear();
+            }
+        }
     }
 
     /**
@@ -189,6 +202,21 @@ public class InterfaceController {
      */
     @FXML
     public void handleRandomGridButtonAction() {
+        SudokuProblem<Integer> sudokuProblem = new SudokuProblem<>();
+
+        generateRandomGrid(sudokuProblem);
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                TextField textField = (TextField) sudokuGrid.getChildren().get(i * 9 + j);
+                if (sudokuProblem.getGrid()[i][j] != 0) {
+                    textField.setText(String.valueOf(sudokuProblem.getGrid()[i][j]));
+                } else {
+                    textField.clear();
+                }
+                textField.setStyle("-fx-text-fill: black; -fx-font-size: 25; -fx-font-family: Arial;");
+            }
+        }
     }
 
     /**
@@ -197,7 +225,7 @@ public class InterfaceController {
      */
     private void generateRandomGrid(SudokuProblem<Integer> sudokuProblem) {
         Random random = new Random();
-        int cellsToFill = 20; // Change this value to adjust the difficulty of the Sudoku grid
+        int cellsToFill = 25;
 
         for (int i = 0; i < cellsToFill; i++) {
             int row, col, value;
@@ -212,7 +240,7 @@ public class InterfaceController {
             } while (!isValid(sudokuProblem, row, col, value));
 
             sudokuProblem.setPos(new SudokuPosition(row, col));
-            sudokuProblem.setValue(value);
+            sudokuProblem.addValue(value, row, col);
         }
     }
 

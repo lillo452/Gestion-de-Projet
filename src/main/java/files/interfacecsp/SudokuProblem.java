@@ -13,14 +13,12 @@ public class SudokuProblem<Integer> implements Problem<Integer>{
 
     // The Sudoku grid
     private int[][] Grid = new int[9][9];
-    // The domain of the Sudoku problem
     private Domain<Integer>[][] domain = new Domain[9][9];
-    // The x and y coordinates of the current position
     private int x;
     private int y;
-    // The x and y coordinates of the current grid
     private int gridX;
     private int gridY;
+    private boolean[][] initialFilled = new boolean[9][9];
 
     /**
      * Constructs a new SudokuProblem with an empty grid.
@@ -111,11 +109,24 @@ public class SudokuProblem<Integer> implements Problem<Integer>{
      * @param x the x coordinate
      * @param y the y coordinate
      */
-    public void addValue(Integer value, int x, int y){
+    @Override
+    public void addValue(Integer value, int x, int y) {
         Grid[x][y] = (int)value;
         List<Integer> domain = new ArrayList<>();
         domain.add(value);
         this.domain[x][y] = new SudokuDomain<>(domain);
+        initialFilled[x][y] = true;
+    }
+
+    /**
+     * Returns true if the cell at the given row and column was initially filled, false otherwise.
+     * @param row the row of the cell
+     * @param col the column of the cell
+     * @return true if the cell at the given row and column was initially filled, false otherwise
+     */
+    @Override
+    public boolean wasInitiallyFilled(int row, int col) {
+        return initialFilled[row][col];
     }
 
     /**
@@ -263,7 +274,6 @@ public class SudokuProblem<Integer> implements Problem<Integer>{
     }
 
     /**
-     * Returns true if the Sudoku grid is valid, false otherwise.
      * @return true if the Sudoku grid is valid, false otherwise
      */
     public boolean isValidGrid() {

@@ -1,7 +1,6 @@
 package files.interfacecsp;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Stack;
 
 /**
@@ -70,10 +69,10 @@ public class Solver<type> {
                 pop();
                 problem.nextPos();
             }
-            problem.print();
-            System.out.println("\n");
+            //problem.print();
+            //System.out.println("\n");
             int pos = 0;
-            System.out.println("" + ((SudokuPosition)problem.getPos()).getX() + ((SudokuPosition)problem.getPos()).getY() + ((SudokuPosition)problem.getPos()).getGridX() + ((SudokuPosition)problem.getPos()).getGridY());
+            //System.out.println("" + ((SudokuPosition)problem.getPos()).getX() + ((SudokuPosition)problem.getPos()).getY() + ((SudokuPosition)problem.getPos()).getGridX() + ((SudokuPosition)problem.getPos()).getGridY());
             Domain<type> current = problem.getDomain();
             while (!current.isEnd(pos)) {
                 if (contraintVerificator(current.get(pos))) {
@@ -90,18 +89,23 @@ public class Solver<type> {
             }
             beginning = false;
         }
+        if (problem.isValidGrid()) {
+            System.out.println("The grid is valid");
+        }
+        else {
+            System.out.println("The grid is not valid");
+        }
+
         return result;
     }
 
     /**
      * Solves the problem and prints the result.
      */
-    public void solve(){
-        problem.print();
+    public Problem<type> solve(){
         if(!solving()){
             System.out.println("could not solve \n");
         }
-        System.out.println("\n");
-        problem.print();
+        return problem;
     }
 }

@@ -10,6 +10,9 @@ public interface Problem<type> {
     Position getPos();
     Domain<type> getDomain();
     void setPos(Position pos);
+    void addValue(type value, int x, int y);
+
+    boolean wasInitiallyFilled(int row, int col);
     void setValue(type value);
     void nextPos();
     Problem<type> makeCopy();
